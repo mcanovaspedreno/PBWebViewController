@@ -25,7 +25,7 @@
 
 @implementation PBWebViewController
 
-@synthesize HTML;
+@synthesize offlineHTML;
 
 - (id)init
 {
@@ -76,8 +76,15 @@
     self.webView.delegate = self;
     if (self.URL) {
         [self load];
-    } else if (![self.HTML isEqualToString:@""]) {
-        [[self webView] loadHTMLString:self.HTML baseURL:nil];
+    } else if (![[self offlineHTML] isEqualToString:@""]) {
+        [[self webView] loadHTMLString:self.offlineHTML baseURL:nil];
+        
+        if (self.navigationController.toolbarHidden) {
+            self.toolbarPreviouslyHidden = YES;
+            if (self.showsNavigationToolbar) {
+                [self.navigationController setToolbarHidden:NO animated:YES];
+            }
+        }
     }
 }
 

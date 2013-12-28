@@ -39,7 +39,7 @@
 @property (assign, nonatomic) BOOL showsNavigationToolbar;
 
 /* A NSString with a html string content*/
-@property (assign, nonatomic) NSString *HTML;
+@property (copy, nonatomic) NSString *offlineHTML;
 
 /**
  * Loads the given `URL`. This is called automatically when the when the web view appears if a `URL` exists,

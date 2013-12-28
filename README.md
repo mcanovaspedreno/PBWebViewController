@@ -36,7 +36,7 @@ See the example project for more advanced usage.
 
 ### Fork changes
 
-New property HTML so that you can load an offline web stored in a NSString or a file.
+New property offlineHTML so that you can load an offline web stored in a NSString or a file.
 URL property has priority if it is assigned.
 
 ### Subclassing Notes
