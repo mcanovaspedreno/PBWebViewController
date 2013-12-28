@@ -25,6 +25,8 @@
 
 @implementation PBWebViewController
 
+@synthesize HTML;
+
 - (id)init
 {
     self = [super init];
@@ -74,6 +76,8 @@
     self.webView.delegate = self;
     if (self.URL) {
         [self load];
+    } else if (![self.HTML isEqualToString:@""]) {
+        [[self webView] loadHTMLString:self.HTML baseURL:nil];
     }
 }
 
