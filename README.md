@@ -34,6 +34,11 @@ self.webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityT
 
 See the example project for more advanced usage.
 
+### Fork changes
+
+New property HTML so that you can load an offline web stored in a NSString or a file.
+URL property has priority if it is assigned.
+
 ### Subclassing Notes
 
 `PBWebViewController` can safely be subclassed to implement custom behaveour.
