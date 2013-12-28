@@ -31,6 +31,9 @@ self.webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityT
 // Push it
 [self.navigationController pushViewController:self.webViewController animated:YES];
 ```
+## Fork Changes
+
+New property HTML so that you can load an offline web stored in a NSString or a file.
 
 See the example project for more advanced usage.
 
