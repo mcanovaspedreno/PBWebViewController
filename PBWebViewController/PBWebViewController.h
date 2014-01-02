@@ -42,6 +42,11 @@
 @property (copy, nonatomic) NSString *offlineHTML;
 
 /**
+ * Protocol to call uiwebview's delegate functions outside this class
+ */
+@property (weak, nonatomic) id<UIWebViewDelegate> delegateWebView;
+
+/**
  * Loads the given `URL`. This is called automatically when the when the web view appears if a `URL` exists,
  * otehrwise it can be called manually.
  */
@@ -51,5 +56,15 @@
  * Clears the contents of the web view.
  */
 - (void)clear;
+
+/**
+ * Get the html string of a web page.
+ */
+- (NSString *)getWebHTML;
+
+/**
+ * Get the web page title.
+ */
+- (NSString *)getWebTitle;
 
 @end

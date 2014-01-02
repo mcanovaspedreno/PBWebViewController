@@ -26,6 +26,7 @@
 @implementation PBWebViewController
 
 @synthesize offlineHTML;
+@synthesize delegateWebView;
 
 - (id)init
 {
@@ -53,6 +54,16 @@
 {
     [self.webView loadHTMLString:@"" baseURL:nil];
     self.title = @"";
+}
+
+- (NSString *)getWebHTML
+{
+    return [[self webView] stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+}
+
+- (NSString *)getWebTitle
+{
+    return [[self webView] stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
 #pragma mark - View controller lifecycle
@@ -273,6 +284,15 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.activitiyPopoverController = nil;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if ([delegateWebView respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
+        [delegateWebView webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    
+    return true;
 }
 
 @end
